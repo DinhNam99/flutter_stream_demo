@@ -13,26 +13,6 @@ class StreamDemo extends StatefulWidget {
 }
 
 class _StreamDemoState extends State<StreamDemo> {
-  StreamController<String> streamController = StreamController.broadcast();
-
-  void newMessage(int number, String message) {
-    final duration = Duration(seconds: number);
-
-    Timer.periodic(duration, (Timer t) => streamController.add(message));
-  }
-
-  bool _running = true;
-
-  Stream<String> _clock() async* {
-    // This loop will run forever because _running is always true
-    while (_running) {
-      await Future<void>.delayed(Duration(seconds: 1));
-      DateTime _now = DateTime.now();
-      // This will be displayed on the screen as current time
-      yield "${_now.hour} : ${_now.minute} : ${_now.second}";
-    }
-  }
-
   List<Map<String, String>> _mess = [];
 
   Stream<List<Map<String, String>>> _chatStream() async* {
@@ -62,8 +42,6 @@ class _StreamDemoState extends State<StreamDemo> {
   }
 
   void dispose() {
-    streamController.close();
-
     super.dispose();
   }
 
