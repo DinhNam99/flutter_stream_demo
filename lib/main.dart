@@ -24,8 +24,11 @@ class MyApp extends StatelessWidget {
       appBar: AppBar(
         title: Text("DEMO"),
       ),
+
       body: Container(
+
         child: Column(
+        
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             _buildBtn(
